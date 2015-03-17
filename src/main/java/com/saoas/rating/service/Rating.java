@@ -2,6 +2,9 @@ package com.saoas.rating.service;
 
 import com.saoas.rating.dao.RatingDAO;
 import com.saoas.rating.dto.RateDTO;
+import com.saoas.rating.model.Event;
+import com.saoas.rating.model.Rate;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +16,7 @@ import java.util.List;
 @Service
 public class Rating implements IRating {
 
+    Logger LOG = Logger.getLogger(Rating.class);
     @Autowired
     private RatingDAO dao;
 
@@ -22,8 +26,8 @@ public class Rating implements IRating {
      * @param dto
      */
     @Override
-    public void addComment(RateDTO dto) {
-
+    public Event addComment(RateDTO dto) {
+        return null;
     }
 
     /**
@@ -32,8 +36,12 @@ public class Rating implements IRating {
      * @param dto
      */
     @Override
-    public void addScore(RateDTO dto) {
-
+    public Event addScore(RateDTO dto) {
+        Event event = dao.getByName(dto.geteName());
+        LOG.debug(event);
+        Rate rate = new Rate(dto.getScore());
+        event.getRates().add(rate);
+        return event;
     }
 
     /**

@@ -2,6 +2,7 @@ package com.saoas.rating.model;
 
 import org.apache.commons.collections.CollectionUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,7 +12,7 @@ public class Event {
 
     private String name;
     private String description;
-    private List<Rate> rates;
+    private List<Rate> rates = new ArrayList<Rate>();
     private int averageRating;
 
     public Event(String name) {
@@ -33,9 +34,9 @@ public class Event {
 
     public double getAverageRating() {
         Integer avg = 0;
-        if (!CollectionUtils.isEmpty(rates)) {
-            for (Rate rate : rates) {
-                avg += rate.getScore() / rates.size();
+        if (!CollectionUtils.isEmpty(this.rates)) {
+            for (Rate rate : this.rates) {
+                avg += rate.getScore() / this.rates.size();
             }
             return avg.doubleValue();
         }
@@ -56,5 +57,15 @@ public class Event {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", rates=" + rates +
+                ", averageRating=" + averageRating +
+                '}';
     }
 }

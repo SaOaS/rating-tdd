@@ -1,6 +1,7 @@
 package com.saoas.rating.service;
 
 import com.saoas.rating.dto.RateDTO;
+import com.saoas.rating.model.Event;
 
 import java.util.List;
 
@@ -14,14 +15,14 @@ public interface IRating {
      *
      * @param dto
      */
-    void addComment(RateDTO dto);
+    Event addComment(RateDTO dto);
 
     /**
      * Allow people to rate an event
      *
      * @param dto
      */
-    void addScore(RateDTO dto);
+    Event addScore(RateDTO dto);
 
     /**
      * Provide comments about their rating
