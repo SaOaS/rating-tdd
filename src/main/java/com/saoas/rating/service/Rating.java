@@ -4,6 +4,7 @@ import com.saoas.rating.dao.RatingDAO;
 import com.saoas.rating.dto.RateDTO;
 import com.saoas.rating.model.Event;
 import com.saoas.rating.model.Rate;
+import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ import java.util.List;
 @Service
 public class Rating implements IRating {
 
-    Logger LOG = Logger.getLogger(Rating.class);
+    Logger LOG = LogManager.getLogger(Rating.class);
     @Autowired
     private RatingDAO dao;
 
